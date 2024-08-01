@@ -9,9 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "mobile-bg": "url('/images/background-mobile.svg')",
+        "tablet-bg": "url('/images/background-tablet.svg')",
+        "desktop-bg": "url('/images/background-desktop.svg')",
       },
     },
   },
