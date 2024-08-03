@@ -8,8 +8,78 @@
   }
 }
 
+@font-face {
+  font-family: 'Mouse Memoirs';
+  src: url('/fonts/MouseMemoirs-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .shadow-inner-blue {
+    @apply shadow-inner;
+    box-shadow: inset 0px 10px 5px 10px #2463FF;
+    opacity: .6;
+  }
+}
+
+h1 {
+  font-family: 'Mouse Memoirs', sans-serif;
+  font-size: 136px;
+}
+
+h2 {
+  font-family: 'Mouse Memoirs', sans-serif;
+  font-size: 88px;
+}
+
+h3 {
+  font-family: 'Mouse Memoirs', sans-serif;
+  font-size: 48px;
+}
+
+h4 {
+  font-family: 'Mouse Memoirs', sans-serif;
+  font-size: 32px;
+}
+
+p {
+  font-family: 'Mouse Memoirs', sans-serif;
+  font-size: 26px;
+}
+
+.card {
+  width: 592px;
+  height: 500px;
+  border-radius: 48px;
+  background: linear-gradient(180deg, #344ABA 0%, #001479 100%);
+  box-shadow: inset 0px 10px 2px 5px #2463FF;
+  opacity: .9;
+  position: relative;
+  overflow: hidden;
+}
+
+.outer-card {
+  width: 592px;
+  height: 500px;
+  border-radius: 48px;
+  box-shadow: 0px 10px 2px 3px #261676;
+}
+
+@media screen and (max-width: 624px) {
+  .card {
+    width: 324px;
+    height: 481px;
+  }
+
+  .outer-card {
+    width: 324px;
+    height: 481px;
   }
 }

@@ -13,6 +13,9 @@ const config: Config = {
         "tablet-bg": "url('/images/background-tablet.svg')",
         "desktop-bg": "url('/images/background-desktop.svg')",
       },
+      fontFamily: {
+        'mouse-memoirs': ['"Mouse Memoirs"', 'sans-serif'],
+      },
     },
   },
   plugins: [],
