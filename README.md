@@ -1,2 +1,2 @@
 # Hangman Game
-Documentation currently under construction# hangman-game
+Documentation currently under construction
