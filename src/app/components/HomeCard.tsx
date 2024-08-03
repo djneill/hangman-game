@@ -1,9 +1,16 @@
 import React from 'react'
 
-export default function HomeCard() {
+interface HomeCardProps {
+    children: React.ReactNode
+}
+
+export default function HomeCard({ children }: HomeCardProps) {
     return (
-        <div className='outer-card'>
-            <div className="card shadow-xl">
+        <div className='relative overflow-visible'>
+            <div className='outer-card'>
+                <div className="card flex flex-col items-center justify-center">
+                    {children}
+                </div>
             </div>
         </div>
     )
