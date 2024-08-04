@@ -6,7 +6,7 @@ interface HomeCardProps {
 
 export default function HomeCard({ children }: HomeCardProps) {
     return (
-        <div className='relative overflow-visible'>
+        <div className='relative'>
             <div className='outer-card'>
                 <div className="card flex flex-col items-center justify-center">
                     {children}

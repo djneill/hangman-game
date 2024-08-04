@@ -5,18 +5,43 @@ import HowToPlay from "./components/HowToPlay";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center overflow-hidden">
-      <div className="absolute top-20 sm:top-8 z-10 transform">
-        <Logo />
-      </div>
-      <HomeCard>
-        <div className="flex flex-col justify-center items-center">
-          <PlayButton />
-          <div className="flex w-full justify-center absolute bottom-8">
-            <HowToPlay />
-          </div>
+    <div className="min-h-screen flex flex-col justify-center items-center px-4">
+      <div className="relative w-full max-w-[592px] flex flex-col items-center">
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+          <Logo />
         </div>
-      </HomeCard>
+        <HomeCard>
+          <div className="flex flex-col justify-center items-center h-full py-12">
+            <PlayButton />
+            <div className="flex w-full justify-center absolute bottom-8">
+              <HowToPlay />
+            </div>
+          </div>
+        </HomeCard>
+      </div>
     </div>
   );
 }
+
+// import Logo from "./components/Logo";
+// import HomeCard from "./components/HomeCard";
+// import PlayButton from "./components/PlayButton";
+// import HowToPlay from "./components/HowToPlay";
+
+// export default function Home() {
+//   return (
+//     <div className="min-h-screen container flex flex-col justify-center items-center align-middle overflow-hidden">
+//       <div className="absolute top-28 sm:top-4 z-10">
+//         <Logo />
+//       </div>
+//       <HomeCard>
+//         <div className="flex flex-col justify-center items-center">
+//           <PlayButton />
+//           <div className="flex w-full justify-center absolute bottom-8">
+//             <HowToPlay />
+//           </div>
+//         </div>
+//       </HomeCard>
+//     </div>
+//   );
+// }
