@@ -20,28 +20,5 @@ export default function Home() {
         </HomeCard>
       </div>
     </div>
-  );
+  )
 }
-
-// import Logo from "./components/Logo";
-// import HomeCard from "./components/HomeCard";
-// import PlayButton from "./components/PlayButton";
-// import HowToPlay from "./components/HowToPlay";
-
-// export default function Home() {
-//   return (
-//     <div className="min-h-screen container flex flex-col justify-center items-center align-middle overflow-hidden">
-//       <div className="absolute top-28 sm:top-4 z-10">
-//         <Logo />
-//       </div>
-//       <HomeCard>
-//         <div className="flex flex-col justify-center items-center">
-//           <PlayButton />
-//           <div className="flex w-full justify-center absolute bottom-8">
-//             <HowToPlay />
-//           </div>
-//         </div>
-//       </HomeCard>
-//     </div>
-//   );
-// }
