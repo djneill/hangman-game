@@ -2,6 +2,7 @@ import Logo from "./components/Logo";
 import HomeCard from "./components/HomeCard";
 import PlayButton from "./components/PlayButton";
 import HowToPlay from "./components/HowToPlay";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -14,7 +15,9 @@ export default function Home() {
           <div className="flex flex-col justify-center items-center h-full py-12">
             <PlayButton />
             <div className="flex w-full justify-center absolute bottom-8">
-              <HowToPlay />
+              <Link href={'/howToPlay'}>
+                <HowToPlay />
+              </Link>
             </div>
           </div>
         </HomeCard>

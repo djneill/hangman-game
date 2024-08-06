@@ -1,6 +1,7 @@
-import React from 'react'
-import BackButton from '../components/BackButton'
-import rules from '../components/data/rules'
+import React from 'react';
+import BackButton from '../components/BackButton';
+import rules from '../components/data/rules';
+import Link from 'next/link';
 
 interface Rule {
     id: string;
@@ -12,7 +13,9 @@ export default function Page() {
     return (
         <div className='min-h-screen w-[324px] mx-auto mt-8'>
             <div className="flex justify-between mb-10">
-                <BackButton />
+                <Link href={'/'}>
+                    <BackButton />
+                </Link>
                 <h2 className='text-3xl'>How To Play</h2>
             </div>
 
