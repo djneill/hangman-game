@@ -15,6 +15,18 @@
   font-style: normal;
 }
 
+@layer base {
+
+  .heading-xl,
+  .heading-l,
+  .heading-m,
+  .heading-s,
+  .body {
+    font-family: 'Mouse Memoirs', sans-serif;
+    letter-spacing: 2px;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -29,33 +41,32 @@
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-p {
-  font-family: 'Mouse Memoirs', sans-serif;
-  letter-spacing: 2px;
-}
-
-h1 {
+.heading-xl {
   font-size: 136px;
 }
 
-h2 {
+.heading-l {
   font-size: 88px;
 }
 
-h3 {
+.heading-m {
   font-size: 48px;
 }
 
-h4 {
+.heading-s {
   font-size: 32px;
 }
 
-p {
+.body {
   font-size: 26px;
+}
+
+.body-s {
+  font-family: 'Mouse Memoirs', sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #847cbc;
+  font-weight: thin;
 }
 
 .card {
@@ -117,6 +128,29 @@ p {
 .back-button:hover {
   background: linear-gradient(180deg, #FE71FE 0%, #7199FF 100%);
   box-shadow: inset 0px -1px 0px 3px #8831f0;
+}
+
+.gradient-text {
+  background: linear-gradient(to bottom, #67B6FF, #FFFFFF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.gradient-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  -webkit-text-stroke: 6px #2c3342;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
 }
 
 /* Tablet */

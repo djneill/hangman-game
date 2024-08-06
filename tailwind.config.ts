@@ -16,6 +16,13 @@ const config: Config = {
       fontFamily: {
         'mouse-memoirs': ['"Mouse Memoirs"', 'sans-serif'],
       },
+      fontSize: {
+        'heading-xl': ['136px', { lineHeight: '1', letterSpacing: '2px' }],
+        'heading-l': ['88px', { lineHeight: '1', letterSpacing: '2px' }],
+        'heading-m': ['48px', { lineHeight: '1', letterSpacing: '2px' }],
+        'heading-s': ['32px', { lineHeight: '1', letterSpacing: '2px' }],
+        'body': ['26px', { lineHeight: '1', letterSpacing: '2px' }],
+      },
     },
   },
   plugins: [],
