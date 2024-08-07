@@ -16,14 +16,8 @@
 }
 
 @layer base {
-
-  .heading-xl,
-  .heading-l,
-  .heading-m,
-  .heading-s,
-  .body {
+  html {
     font-family: 'Mouse Memoirs', sans-serif;
-    letter-spacing: 2px;
   }
 }
 
@@ -43,6 +37,10 @@
 
 .heading-xl {
   font-size: 136px;
+}
+
+.heading-mid {
+  font-size: 104px;
 }
 
 .heading-l {
@@ -145,7 +143,7 @@
   left: 0;
   top: 0;
   z-index: -1;
-  -webkit-text-stroke: 6px #2c3342;
+  -webkit-text-stroke: 16px #2c3342;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
