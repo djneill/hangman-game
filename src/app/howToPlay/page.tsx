@@ -13,9 +13,7 @@ export default function Page() {
     return (
         <div className='min-h-screen w-[324px] sm:w-[680px] lg:w-[1024px] lg:max-w-[1216px] mx-auto mt-10'>
             <div className="flex justify-between sm:flex-row mb-16 items-center">
-                <Link href={'/'}>
-                    <BackButton />
-                </Link>
+                <BackButton />
                 <div className='text-heading-m sm:text-heading-mid lg:text-heading-xl sm:flex sm:mx-auto sm:self-center gradient-text'
                     data-text="How to Play"
                 >
