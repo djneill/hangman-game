@@ -8,7 +8,7 @@ export default function BackButton() {
         if (window.history.length > 1) {
             router.back();
         } else {
-            router.push('/')
+            router.push('/');
         }
     }
     return (
