@@ -24,6 +24,10 @@ const config: Config = {
         'heading-s': ['32px', { lineHeight: '1', }],
         'body': ['26px', { lineHeight: '1', }],
       },
+      boxShadow: {
+        'category-btn': '0px 2px 0px 2px #261676, inset 0px 3px 0px 3px #519dfb',
+        'category-btn-hover': '0px 2px 0px 2px #261676, inset 0px 3px 0px 3px #2463FF',
+      }
     },
   },
   plugins: [],
