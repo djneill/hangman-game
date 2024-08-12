@@ -13,7 +13,9 @@ export default function Home() {
         </div>
         <HomeCard>
           <div className="flex flex-col justify-center items-center h-full py-12">
-            <PlayButton />
+            <Link href={'/category'}>
+              <PlayButton />
+            </Link>
             <div className="flex w-full justify-center absolute bottom-8">
               <Link href={'/howToPlay'}>
                 <HowToPlay />

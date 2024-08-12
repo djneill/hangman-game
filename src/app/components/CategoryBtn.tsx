@@ -9,7 +9,7 @@ export default function CategoryBtn({ name, onClick }: CategoryBtnProps): JSX.El
     return (
         <button
             onClick={onClick}
-            className='shadow-category-btn hover:shadow-category-btn-hover w-80 h-20 rounded-lg relative overflow-hidden transition-all duration-300 text-white uppercase bg-[#2463FF] hover:bg-[#519dfb]'
+            className='shadow-category-btn hover:shadow-category-btn-hover m-4 w-80 h-20 sm:h-44 rounded-lg relative overflow-hidden transition-all duration-300 text-white uppercase bg-[#2463FF] hover:bg-[#519dfb]'
         >
             {name}
         </button>

@@ -21,18 +21,16 @@ export default function Page() {
                 </div>
             </div>
 
-            <div className='lg:grid lg:grid-cols-3 lg:gap-8 md:w-full'>
-                <div className='flex flex-col justify-center items-center'>
-                    {categories.map((category, index) => (
-                        <div key={index} className='m-4 text-heading-s'>
-                            <CategoryBtn
-                                key={index}
-                                name={category.name}
-                                onClick={() => handleCategorySelect(category.name)}
-                            />
-                        </div>
-                    ))}
-                </div>
+            <div className='flex flex-col justify-center items-center sm:grid sm:grid-cols-2 lg:grid-cols-3'>
+                {categories.map((category, index) => (
+                    <div key={index} className='text-heading-s'>
+                        <CategoryBtn
+                            key={index}
+                            name={category.name}
+                            onClick={() => handleCategorySelect(category.name)}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     )
