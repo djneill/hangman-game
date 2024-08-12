@@ -1,5 +1,6 @@
 'use client'
 import React from 'react';
+import { useRouter } from 'next/navigation'
 import BackButton from '../components/BackButton';
 import { categories } from '../components/data/data';
 import CategoryBtn from '../components/CategoryBtn';
@@ -7,8 +8,11 @@ import CategoryBtn from '../components/CategoryBtn';
 
 
 export default function Page() {
-    const handleCategorySelect = (categoryName: string) => {
+    const router = useRouter()
 
+    const handleCategorySelect = (categoryName: string) => {
+        localStorage.setItem('selectedCategory', categoryName);
+        router.push('/gameboard')
     }
     return (
         <div className='min-h-screen w-[324px] sm:w-[680px] lg:w-[1024px] lg:max-w-[1216px] mx-auto mt-10'>
@@ -23,11 +27,12 @@ export default function Page() {
 
             <div className='flex flex-col justify-center items-center sm:grid sm:grid-cols-2 lg:grid-cols-3'>
                 {categories.map((category, index) => (
-                    <div key={index} className='text-heading-s'>
+                    <div key={index} className='text-heading-s sm:text-heading-m'>
                         <CategoryBtn
                             key={index}
                             name={category.name}
                             onClick={() => handleCategorySelect(category.name)}
+                            aria-label={`Select category: ${category.name}`}
                         />
                     </div>
                 ))}

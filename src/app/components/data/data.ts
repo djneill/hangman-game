@@ -218,5 +218,65 @@ export const categories: Category[] = [
             { "name": "Triathlon", "selected": false },
             { "name": "American Football", "selected": false }
         ]
+    },
+    {
+        name: 'Before and After',
+        words: [
+            { "name": "Peanut Butter and Jelly Bean", "selected": false },
+            { "name": "Back to the Future Shock", "selected": false },
+            { "name": "Chicken Soup for the Soul Train", "selected": false },
+            { "name": "Rock and Roll With the Punches", "selected": false },
+            { "name": "Beauty and the Beast of Burden", "selected": false },
+            { "name": "Breakfast in Bed of Roses", "selected": false },
+            { "name": "Green Eggs and Ham Radio", "selected": false },
+            { "name": "Sweet Home Alabama Slammer", "selected": false },
+            { "name": "The Incredible Hulk Hogan", "selected": false },
+            { "name": "Wheel of Fortune Cookie", "selected": false }
+        ]
+    },
+    {
+        name: 'What Are You Doing?',
+        words: [
+            { "name": "Baking a Birthday Cake", "selected": false },
+            { "name": "Taking a Leisurely Stroll", "selected": false },
+            { "name": "Solving a Crossword Puzzle", "selected": false },
+            { "name": "Planning a Surprise Party", "selected": false },
+            { "name": "Learning to Play the Guitar", "selected": false },
+            { "name": "Watering the Garden", "selected": false },
+            { "name": "Writing a Thank You Note", "selected": false },
+            { "name": "Decorating for the Holidays", "selected": false },
+            { "name": "Packing for a Vacation", "selected": false },
+            { "name": "Browsing through a Bookstore", "selected": false }
+        ]
+    },
+    {
+        name: 'On the Map',
+        words: [
+            { "name": "The Great Barrier Reef", "selected": false },
+            { "name": "Mediterranean Sea", "selected": false },
+            { "name": "The Eiffel Tower", "selected": false },
+            { "name": "Mount Kilimanjaro", "selected": false },
+            { "name": "The Amazon Rainforest", "selected": false },
+            { "name": "The Grand Canyon", "selected": false },
+            { "name": "The Great Wall of China", "selected": false },
+            { "name": "Niagara Falls", "selected": false },
+            { "name": "The Statue of Liberty", "selected": false },
+            { "name": "The Panama Canal", "selected": false }
+        ]
+    },
+    {
+        name: 'Food and Drink',
+        words: [
+            { "name": "Chocolate Chip Cookies", "selected": false },
+            { "name": "Strawberry Lemonade", "selected": false },
+            { "name": "Spaghetti and Meatballs", "selected": false },
+            { "name": "Pineapple Upside Down Cake", "selected": false },
+            { "name": "Grilled Cheese Sandwich", "selected": false },
+            { "name": "Chicken Noodle Soup", "selected": false },
+            { "name": "Bacon Egg and Cheese Bagel", "selected": false },
+            { "name": "Pepperoni Pizza", "selected": false },
+            { "name": "Chocolate Milkshake", "selected": false },
+            { "name": "Macaroni and Cheese", "selected": false }
+        ]
     }
 ]
