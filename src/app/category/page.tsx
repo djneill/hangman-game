@@ -27,14 +27,12 @@ export default function Page() {
 
             <div className='flex flex-col justify-center items-center sm:grid sm:grid-cols-2 lg:grid-cols-3'>
                 {categories.map((category, index) => (
-                    <div key={index} className='text-heading-s sm:text-heading-m'>
-                        <CategoryBtn
-                            key={index}
-                            name={category.name}
-                            onClick={() => handleCategorySelect(category.name)}
-                            aria-label={`Select category: ${category.name}`}
-                        />
-                    </div>
+                    <CategoryBtn
+                        key={index}
+                        name={category.name}
+                        onClick={() => handleCategorySelect(category.name)}
+                        aria-label={`Select category: ${category.name}`}
+                    />
                 ))}
             </div>
         </div>
