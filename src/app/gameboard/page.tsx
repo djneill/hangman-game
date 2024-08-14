@@ -48,21 +48,6 @@ export default function Gameboard() {
         });
     };
 
-    // const renderWordPlaceholders = () => {
-    //     if (!gameState) return null;
-    //     return gameState.word.split('').map((letter, index) => {
-    //         if (letter === ' ') {
-    //             return <div key={index} className='w-6 sm:w-8 lg:w-10'></div>;
-    //         }
-    //         return (
-    //             <div key={index}
-    //                 className='w-10 h-[66px] sm:w-[88px] sm:h-28 lg:w-28 lg:h-32 mx-2 shadow-category-btn rounded-2xl bg-light-blue flex justify-center items-center text-heading-m lg:text-heading-l'
-    //             >
-    //                 {gameState.revealedLetters.has(letter.toUpperCase()) ? letter : ''}
-    //             </div>
-    //         );
-    //     });
-    // };
     const renderWordPlaceholders = () => {
         if (!gameState) return null;
         const words = gameState.word.split(' ');
@@ -72,14 +57,24 @@ export default function Gameboard() {
                 {words.map((word, wordIndex) => (
                     <React.Fragment key={wordIndex}>
                         <div className="flex">
-                            {word.split('').map((letter, letterIndex) => (
-                                <div
-                                    key={`${wordIndex}-${letterIndex}`}
-                                    className='w-10 h-[66px] sm:w-[88px] sm:h-28 lg:w-28 lg:h-32 mx-1 sm:mx-2 shadow-category-btn rounded-2xl bg-light-blue flex justify-center items-center text-heading-m lg:text-heading-l'
-                                >
-                                    {gameState.revealedLetters.has(letter.toUpperCase()) ? letter : ''}
-                                </div>
-                            ))}
+                            {word.split('').map((letter, letterIndex) => {
+                                const isRevealed = gameState.revealedLetters.has(letter.toUpperCase());
+                                return (
+                                    <div
+                                        key={`${wordIndex}-${letterIndex}`}
+                                        className={`
+                                            w-10 h-[66px] sm:w-[88px] sm:h-28 lg:w-28 lg:h-32 
+                                            mx-1 sm:mx-2 shadow-category-btn rounded-2xl 
+                                            bg-light-blue flex justify-center items-center 
+                                            text-heading-m lg:text-heading-l
+                                            ${isRevealed ? 'opacity-100' : 'opacity-30'}
+                                            transition-opacity duration-300 ease-in-out
+                                        `}
+                                    >
+                                        {isRevealed ? letter : ''}
+                                    </div>
+                                );
+                            })}
                         </div>
                         {wordIndex < words.length - 1 && (
                             <div className="w-6 sm:w-8 lg:w-10"></div>
