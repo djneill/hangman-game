@@ -9,6 +9,7 @@ interface GameState {
     category: string;
     word: string;
     revealedLetters: Set<string>;
+    usedLetters: Set<string>;
     lives: number;
 }
 
@@ -17,13 +18,24 @@ export default function Gameboard() {
     const [gameState, setGameState] = useState<GameState | null>(null);
 
     useEffect(() => {
-        const selectedCategory = localStorage.getItem('selectedCategory');
-        if (selectedCategory) {
-            initializeGame(selectedCategory);
+        const savedGame = localStorage.getItem('hangmanGameState');
+        if (savedGame) {
+            const parsedGame = JSON.parse(savedGame);
+            setGameState({
+                ...parsedGame,
+                revealedLetters: new Set(parsedGame.revealedLetters),
+                usedLetters: new Set(parsedGame.usedLetters)
+            });
         } else {
-            router.push('/category')
+            const selectedCategory = localStorage.getItem('selectedCategory');
+            if (selectedCategory) {
+                initializeGame(selectedCategory);
+            } else {
+                router.push('/category')
+            }
         }
-    }, [router]); // May need an empty dependency array
+    }, [router]);
+
 
     const initializeGame = (categoryName: string) => {
         const category = categories.find(cat => cat.name === categoryName);
@@ -31,21 +43,33 @@ export default function Gameboard() {
 
         const unselectedWords = category.words.filter(word => !word.selected);
         if (unselectedWords.length === 0) {
-            // Reset all words if all have been selected
             category.words.forEach(word => word.selected = false);
         }
 
         const randomIndex = Math.floor(Math.random() * unselectedWords.length);
         const selectedWord = unselectedWords[randomIndex];
         selectedWord.selected = true;
-        console.log(selectedWord) // Don't forget to remove this 
+        console.log(selectedWord) // Don't forget to remove this!!!!
 
-        setGameState({
+        const newGameState = {
             category: categoryName,
             word: selectedWord.name.toUpperCase(),
-            revealedLetters: new Set(),
+            revealedLetters: new Set<string>(),
+            usedLetters: new Set<string>(),
             lives: 8,
-        });
+        };
+
+        setGameState(newGameState);
+        saveGameToLocalStorage(newGameState);
+    };
+
+    const saveGameToLocalStorage = (gameState: GameState) => {
+        const gameStateForStorage = {
+            ...gameState,
+            revealedLetters: Array.from(gameState.revealedLetters),
+            usedLetters: Array.from(gameState.usedLetters)
+        };
+        localStorage.setItem('hangmanGameState', JSON.stringify(gameStateForStorage));
     };
 
     const renderWordPlaceholders = () => {
@@ -95,7 +119,7 @@ export default function Gameboard() {
         );
     };
 
-    // Helper function to chunk words
+    // Limit word to 10 letters then hyphenate
     const chunk = (word: string, size: number): string[] => {
         const chunks = [];
         for (let i = 0; i < word.length; i += size) {
@@ -106,30 +130,45 @@ export default function Gameboard() {
 
     const renderKeyboard = () => {
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        return alphabet.split('').map(letter => (
-            <button
-                key={letter}
-                onClick={() => handleLetterGuess(letter)}
-                className='w-7 h-14 sm:w-16 sm:h-20 lg:w-24 lg:h-20 m-1 bg-white text-blue-900 hover:bg-light-blue hover:text-white rounded-2xl text-heading-s lg:text-heading-m'
-            >
-                {letter}
-            </button>
-        ));
+        return alphabet.split('').map(letter => {
+            const isUsed = gameState?.usedLetters.has(letter) || false;
+            return (
+                <button
+                    key={letter}
+                    onClick={() => handleLetterGuess(letter)}
+                    disabled={isUsed}
+                    className={`w-7 h-14 sm:w-16 sm:h-20 lg:w-24 lg:h-20 m-1 ${isUsed ? 'bg-gray-300 text-dark-navy opacity-30' : 'bg-white text-blue-900 hover:bg-light-blue hover:text-white opacity-100'}  rounded-2xl text-heading-s lg:text-heading-m transition-all duration-300`}
+                >
+                    {letter}
+                </button>
+            );
+        });
     };
 
     const handleLetterGuess = (letter: string) => {
-        if (!gameState) return;
-        const newRevealedLetters = new Set(gameState.revealedLetters);
-        newRevealedLetters.add(letter);
+        if (!gameState || gameState.usedLetters.has(letter)) return;
 
         setGameState(prevState => {
             if (!prevState) return null;
-            return {
+            const newUsedLetters = new Set(prevState.usedLetters).add(letter);
+            const newRevealedLetters = new Set(prevState.revealedLetters);
+
+            if (prevState.word.includes(letter)) {
+                newRevealedLetters.add(letter)
+            }
+            const newState = {
                 ...prevState,
                 revealedLetters: newRevealedLetters,
-                lives: prevState?.word.includes(letter) ? prevState.lives : prevState.lives - 1
+                usedLetters: newUsedLetters,
+                lives: prevState.word.includes(letter) ? prevState.lives : prevState.lives - 1
             };
+            saveGameToLocalStorage(newState);
+            return newState;
         });
+    };
+
+    const clearSavedGame = () => {
+        localStorage.removeItem('hangmanGameState');
     };
 
     if (!gameState) return <div>Loading...</div>
@@ -143,13 +182,13 @@ export default function Gameboard() {
                 </div>
                 <div className="flex justify-end items-center">
                     <HealthBar lives={gameState.lives} maxLives={8} />
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 54 50" className='w-[26px] h-[24px] sm:w-[53px] sm:h-[48px] lg:w-[54px] lg:h-[50px] ml-8'><path fill="url(#a)" d="m26.667 49.467-3.867-3.52C9.067 33.493 0 25.253 0 15.2 0 6.96 6.453.533 14.667.533c4.64 0 9.093 2.16 12 5.547 2.906-3.387 7.36-5.547 12-5.547C46.88.533 53.333 6.96 53.333 15.2c0 10.053-9.066 18.293-22.8 30.747l-3.866 3.52Z" /><defs><linearGradient id="a" x1="26.667" x2="26.667" y1="8.567" y2="49.467" gradientUnits="userSpaceOnUse"><stop stop-color="#FE71FE" /><stop offset="1" stop-color="#7199FF" /></linearGradient></defs></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 54 50" className='w-[26px] h-[24px] sm:w-[53px] sm:h-[48px] lg:w-[54px] lg:h-[50px] ml-8'><path fill="url(#a)" d="m26.667 49.467-3.867-3.52C9.067 33.493 0 25.253 0 15.2 0 6.96 6.453.533 14.667.533c4.64 0 9.093 2.16 12 5.547 2.906-3.387 7.36-5.547 12-5.547C46.88.533 53.333 6.96 53.333 15.2c0 10.053-9.066 18.293-22.8 30.747l-3.866 3.52Z" /><defs><linearGradient id="a" x1="26.667" x2="26.667" y1="8.567" y2="49.467" gradientUnits="userSpaceOnUse"><stop stopColor="#FE71FE" /><stop offset="1" stopColor="#7199FF" /></linearGradient></defs></svg>
                 </div>
             </div>
             <div className="flex justify-center items-center my-12">
                 {renderWordPlaceholders()}
             </div>
-            <div className="grid grid-cols-9 gap-1 justify-center">
+            <div className="flex flex-wrap gap-1 justify-center items-center">
                 {renderKeyboard()}
             </div>
         </div>

@@ -17,6 +17,9 @@ const config: Config = {
         'dark-navy': '#261676',
         'light-blue': '#2463FF',
       },
+      textColor: {
+        'dark-navy': '#261676',
+      },
       fontFamily: {
         'mouse-memoirs': ['"Mouse Memoirs"', 'sans-serif'],
       },
