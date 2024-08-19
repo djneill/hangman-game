@@ -1,3 +1,5 @@
+'use client'
+import { useRouter } from 'next/navigation';
 import Logo from "./components/Logo";
 import HomeCard from "./components/HomeCard";
 import PlayButton from "./components/PlayButton";
@@ -5,6 +7,12 @@ import HowToPlay from "./components/HowToPlay";
 import Link from "next/link";
 
 export default function Home() {
+  const router = useRouter();
+
+  const handlePlayClick = () => {
+    localStorage.removeItem('hangmanGameState');
+    router.push('/category')
+  }
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-4">
       <div className="relative w-full max-w-[592px] flex flex-col items-center">
@@ -13,9 +21,7 @@ export default function Home() {
         </div>
         <HomeCard>
           <div className="flex flex-col justify-center items-center h-full py-12">
-            <Link href={'/category'}>
-              <PlayButton />
-            </Link>
+            <PlayButton onClick={handlePlayClick} />
             <div className="flex w-full justify-center absolute bottom-8">
               <Link href={'/howToPlay'}>
                 <HowToPlay />
