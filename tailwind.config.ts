@@ -34,6 +34,8 @@ const config: Config = {
       boxShadow: {
         'category-btn': '0px 2px 0px 2px #261676, inset 0px 3px 0px 3px #519dfb',
         'category-btn-hover': '0px 2px 0px 2px #261676, inset 0px 3px 0px 3px #2463FF',
+        'pinky': '0px 5px 2px 3px #2c3342, inset 0px 3px 0px 3px #8831f0',
+        'pinky-hover': '0px 5px 2px 3px #2c3342, inset 0px 3px 0px 3px #FE71FE',
       },
       transitionTimingFunction: {
         'out-slow': 'cubic-bezier(0, 0, 0.2, 1)'
