@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { categories } from '../components/data/data';
 import MenuBtn from '../components/MenuBtn';
 import HealthBar from '../components/HealthBar';
+import GameModal from '../components/GameModal';
 
 interface GameState {
     category: string;
@@ -16,6 +17,14 @@ interface GameState {
 export default function Gameboard() {
     const router = useRouter();
     const [gameState, setGameState] = useState<GameState | null>(null);
+
+    const [modalState, setModalState] = useState<{
+        isOpen: boolean;
+        type: 'paused' | 'win' | 'lose';
+    }>({
+        isOpen: false,
+        type: 'paused'
+    });
 
     useEffect(() => {
         const savedGame = localStorage.getItem('hangmanGameState');
@@ -156,15 +165,43 @@ export default function Gameboard() {
             if (prevState.word.includes(letter)) {
                 newRevealedLetters.add(letter)
             }
+
             const newState = {
                 ...prevState,
                 revealedLetters: newRevealedLetters,
                 usedLetters: newUsedLetters,
                 lives: prevState.word.includes(letter) ? prevState.lives : prevState.lives - 1
             };
+
+            if (newRevealedLetters.size === new Set(prevState.word.replace(/\s/g, '')).size) {
+                setModalState({ isOpen: true, type: 'win' });
+            } else if (newState.lives === 0) {
+                setModalState({ isOpen: true, type: 'lose' });
+            }
+
             saveGameToLocalStorage(newState);
             return newState;
         });
+    };
+
+    const handleContinue = () => {
+        setModalState({ isOpen: false, type: 'paused' });
+    };
+
+    const handleNewCategory = () => {
+        setGameState(null);
+        localStorage.removeItem('hangmanGameState');
+        router.push('/category');
+    };
+
+    const handleQuit = () => {
+        setGameState(null);
+        localStorage.removeItem('hangmanGameState');
+        router.push('/');
+    };
+
+    const openPauseMenu = () => {
+        setModalState({ isOpen: true, type: 'paused' });
     };
 
     const clearSavedGame = () => {
@@ -177,7 +214,7 @@ export default function Gameboard() {
         <div className='min-h-screen w-[324px] sm:w-[680px] lg:w-[1024px] mx-auto mt-10 text-white'>
             <div className="flex justify-between items-center mb-4">
                 <div className="flex justify-start items-center">
-                    <MenuBtn />
+                    <MenuBtn onClick={openPauseMenu} />
                     <div className='text-heading-s sm:text-heading-m lg:text-heading-l ml-8'>{gameState.category}</div>
                 </div>
                 <div className="flex justify-end items-center">
@@ -191,6 +228,14 @@ export default function Gameboard() {
             <div className="flex flex-wrap gap-1 justify-center items-center">
                 {renderKeyboard()}
             </div>
+            {modalState.isOpen && (
+                <GameModal
+                    type={modalState.type}
+                    onContinue={handleContinue}
+                    onNewCategory={handleNewCategory}
+                    onQuit={handleQuit}
+                />
+            )}
         </div>
     );
 }
