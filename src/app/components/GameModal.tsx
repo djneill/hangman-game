@@ -25,7 +25,7 @@ export default function GameModal({ type, onContinue, onNewCategory, onQuit }: G
                 </div>
                 <div className="card w-full">
                     <div className="flex flex-col items-center justify-between h-full py-16 px-4">
-                        <div className="flex flex-col text-heading-s space-y-4 w-full max-w-[260px] justify-center my-auto items-center">
+                        <div className="flex flex-col text-heading-s space-y-8 w-full max-w-[260px] justify-center my-auto items-center">
                             <button
                                 onClick={onContinue}
                                 className="shadow-category-btn hover:shadow-category-btn-hover bg-[#2463FF] hover:bg-[#519dfb] text-white py-4 px-6 rounded-full w-56 h-14 transition-all duration-300"
@@ -40,7 +40,7 @@ export default function GameModal({ type, onContinue, onNewCategory, onQuit }: G
                             </button>
                             <button
                                 onClick={onQuit}
-                                className="shadow-pinky hover:shadow-pinky-hover bg-[#FE71FE] hover:bg-[#8831f0] text-white py-4 px-6 rounded-full w-[235px] transition-all duration-300"
+                                className="shadow-pinky hover:shadow-pinky-hover bg-gradient-to-b from-[#FE71FE] to-[#7199FF] text-white hover:from-[#7199FF] hover:to-[#8831f0] py-4 px-6 rounded-full w-[235px] transition-all duration-300"
                             >
                                 Quit Game
                             </button>

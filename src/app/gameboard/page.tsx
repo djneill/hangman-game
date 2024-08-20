@@ -17,6 +17,7 @@ interface GameState {
 export default function Gameboard() {
     const router = useRouter();
     const [gameState, setGameState] = useState<GameState | null>(null);
+    const [maxCharsPerLine, setMaxCharsPerLine] = useState(7);
 
     const [modalState, setModalState] = useState<{
         isOpen: boolean;
@@ -45,6 +46,30 @@ export default function Gameboard() {
         }
     }, [router]);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (typeof window !== 'undefined') {
+                if (window.innerWidth < 640) {
+                    setMaxCharsPerLine(7);
+                } else {
+                    setMaxCharsPerLine(9);
+                }
+            }
+        };
+
+        handleResize();
+
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize);
+        }
+
+        return () => {
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', handleResize);
+            }
+        };
+    }, []);
+
 
     const initializeGame = (categoryName: string) => {
         const category = categories.find(cat => cat.name === categoryName);
@@ -58,7 +83,7 @@ export default function Gameboard() {
         const randomIndex = Math.floor(Math.random() * unselectedWords.length);
         const selectedWord = unselectedWords[randomIndex];
         selectedWord.selected = true;
-        console.log(selectedWord) // Don't forget to remove this!!!!
+        console.log(selectedWord) //*************** */ Don't forget to remove this!!!! ******************
 
         const newGameState = {
             category: categoryName,
@@ -84,7 +109,6 @@ export default function Gameboard() {
     const renderWordPlaceholders = () => {
         if (!gameState) return null;
         const words = gameState.word.split(' ');
-        const maxCharsPerLine: number = 10;
 
         return (
             <div className="flex flex-wrap justify-center gap-4">
@@ -188,24 +212,24 @@ export default function Gameboard() {
         setModalState({ isOpen: false, type: 'paused' });
     };
 
+    const clearSavedGame = () => {
+        localStorage.removeItem('hangmanGameState');
+    };
+
     const handleNewCategory = () => {
         setGameState(null);
-        localStorage.removeItem('hangmanGameState');
+        clearSavedGame();
         router.push('/category');
     };
 
     const handleQuit = () => {
         setGameState(null);
-        localStorage.removeItem('hangmanGameState');
+        clearSavedGame();
         router.push('/');
     };
 
     const openPauseMenu = () => {
         setModalState({ isOpen: true, type: 'paused' });
-    };
-
-    const clearSavedGame = () => {
-        localStorage.removeItem('hangmanGameState');
     };
 
     if (!gameState) return <div>Loading...</div>
