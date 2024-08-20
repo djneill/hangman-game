@@ -1,3 +1,4 @@
+<img align="center" src="public/images/preview.jpg" />
 # Hangman Game
 
 ## Description
