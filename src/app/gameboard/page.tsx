@@ -5,6 +5,7 @@ import { categories } from '../components/data/data';
 import MenuBtn from '../components/MenuBtn';
 import HealthBar from '../components/HealthBar';
 import GameModal from '../components/GameModal';
+import KeyboardListener from '../components/KeyboardListener';
 
 interface GameState {
     category: string;
@@ -208,6 +209,8 @@ export default function Gameboard() {
         });
     };
 
+    const isGameActive = gameState !== null && !modalState.isOpen;
+
     const handleContinue = () => {
         setModalState({ isOpen: false, type: 'paused' });
     };
@@ -260,6 +263,10 @@ export default function Gameboard() {
                     onQuit={handleQuit}
                 />
             )}
+            <KeyboardListener
+                onLetterPress={handleLetterGuess}
+                isGameActive={isGameActive}
+            />
         </div>
     );
 }
