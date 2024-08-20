@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: 'Hangman created by DJ Neill',
     images: [
       {
-        url: 'https://hangman-game-fun.vercel.app/preview.jpg',
+        url: 'https://hangman-game-fun.vercel.app/images/preview.jpg',
         width: 1200,
         height: 630,
         alt: 'Hangman Game',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Hangman',
     description: 'Hangman created by DJ Neill',
-    images: ['https://hangman-game-fun.vercel.app/preview.jpg'],
+    images: ['https://hangman-game-fun.vercel.app/images/preview.jpg'],
     creator: '@CodingGuitarist',
   },
 };
