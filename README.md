@@ -1,15 +1,18 @@
 # Hangman Game
 
 ## Description
-This project is a modern, responsive implementation of the classic Hangman game using Next.js, React, TypeScript, and Tailwind CSS. It features a sleek user interface, multiple word categories, and persistent game state.
+This project is an interactive Hangman game built with Next.js, React, TypeScript, and Tailwind CSS. It features a responsive design, multiple word categories, and supports both on-screen and physical keyboard inputs for an engaging user experience.
 
 ## Features
 - Multiple word categories (e.g., Movies, TV Shows, Countries)
-- Responsive design that works on mobile, tablet, and desktop
-- Persistent game state using localStorage
-- Custom health bar to track remaining lives
-- Interactive on-screen keyboard
-- Word wrapping for longer words or phrases
+- Responsive design for mobile, tablet, and desktop
+- On-screen keyboard for touch devices
+- Physical keyboard support for desktop users
+- Dynamic word wrapping based on screen size
+- Health bar to visualize remaining lives
+- Pause menu with options to continue, choose a new category, or quit
+- Local storage integration for game state persistence
+- Win and lose conditions with appropriate feedback
 
 ## Technologies Used
 - Next.js
