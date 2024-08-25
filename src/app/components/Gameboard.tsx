@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useGameState } from '../hooks/useGameState';
 import { useModalState } from '../hooks/useModalState';
@@ -12,7 +12,7 @@ import { OnScreenKeyboard } from '../components/OnScreenKeyboard';
 
 export default function Gameboard() {
     const router = useRouter();
-    const { gameState, setGameState, handleLetterGuess, isGameOver } = useGameState(
+    const { gameState, setGameState, initializeGame, handleLetterGuess, isGameOver } = useGameState(
         localStorage.getItem('selectedCategory') || ''
     );
     const { modalState, openModal, closeModal } = useModalState();
@@ -39,6 +39,13 @@ export default function Gameboard() {
         localStorage.removeItem('hangmanGameState');
         router.push('/category');
     };
+
+    const handleNextWord = useCallback(() => {
+        if (gameState) {
+            initializeGame(gameState.category);
+            closeModal();
+        }
+    }, [gameState, initializeGame, closeModal]);
 
     const handleQuit = () => {
         setGameState(null);
@@ -69,6 +76,7 @@ export default function Gameboard() {
                 <GameModal
                     type={modalState.type}
                     onContinue={closeModal}
+                    onNextWord={handleNextWord}
                     onNewCategory={handleNewCategory}
                     onQuit={handleQuit}
                 />
