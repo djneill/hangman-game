@@ -38,7 +38,7 @@ export default function GameModal({ type, onContinue, onNextWord, onNewCategory,
                                     onClick={onNextWord}
                                     className="shadow-category-btn hover:shadow-category-btn-hover bg-[#2463FF] hover:bg-[#519dfb] text-white py-4 px-6 rounded-full w-56 h-14 transition-all duration-300"
                                 >
-                                    Next Word
+                                    Next Phrase
                                 </button>
                             )}
                             <button
