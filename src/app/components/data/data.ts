@@ -231,7 +231,12 @@ export const categories: Category[] = [
             { "name": "Green Eggs and Ham Radio", "selected": false },
             { "name": "Sweet Home Alabama Slammer", "selected": false },
             { "name": "The Incredible Hulk Hogan", "selected": false },
-            { "name": "Wheel of Fortune Cookie", "selected": false }
+            { "name": "Wheel of Fortune Cookie", "selected": false },
+            { "name": "Peanut Butter Butterfly", "selected": false },
+            { "name": "Poker Face Value", "selected": false },
+            { "name": "Banana Split Decision", "selected": false },
+            { "name": "Pig in a Blanket Statement", "selected": false },
+            { "name": "Catch of the Day Dream", "selected": false }
         ]
     },
     {
@@ -246,7 +251,12 @@ export const categories: Category[] = [
             { "name": "Writing a Thank You Note", "selected": false },
             { "name": "Decorating for the Holidays", "selected": false },
             { "name": "Packing for a Vacation", "selected": false },
-            { "name": "Browsing through a Bookstore", "selected": false }
+            { "name": "Browsing through a Bookstore", "selected": false },
+            { "name": "Building a Sandcastle", "selected": false },
+            { "name": "Flying a Kite", "selected": false },
+            { "name": "Planting a Vegetable Garden", "selected": false },
+            { "name": "Doing the Laundry", "selected": false },
+            { "name": "Singing in the Shower", "selected": false }
         ]
     },
     {
@@ -261,7 +271,12 @@ export const categories: Category[] = [
             { "name": "The Great Wall of China", "selected": false },
             { "name": "Niagara Falls", "selected": false },
             { "name": "The Statue of Liberty", "selected": false },
-            { "name": "The Panama Canal", "selected": false }
+            { "name": "The Panama Canal", "selected": false },
+            { "name": "The Taj Mahal", "selected": false },
+            { "name": "The Golden Gate Bridge", "selected": false },
+            { "name": "The Colosseum", "selected": false },
+            { "name": "Mount Everest", "selected": false },
+            { "name": "The Great Sphinx", "selected": false }
         ]
     },
     {
@@ -276,7 +291,42 @@ export const categories: Category[] = [
             { "name": "Bacon Egg and Cheese Bagel", "selected": false },
             { "name": "Pepperoni Pizza", "selected": false },
             { "name": "Chocolate Milkshake", "selected": false },
-            { "name": "Macaroni and Cheese", "selected": false }
+            { "name": "Macaroni and Cheese", "selected": false },
+            { "name": "Blueberry Pancakes", "selected": false },
+            { "name": "Iced Caramel Macchiato", "selected": false },
+            { "name": "Barbecue Pulled Pork", "selected": false },
+            { "name": "Vegetable Spring Rolls", "selected": false },
+            { "name": "Mango Coconut Smoothie", "selected": false }
+        ]
+    },
+    {
+        name: 'Same Letter',
+        words: [
+            { "name": "Pickled Peppers", "selected": false },
+            { "name": "Terrific Tomatoes", "selected": false },
+            { "name": "Bouncing Baby Boy", "selected": false },
+            { "name": "Colorful Crayons", "selected": false },
+            { "name": "Slippery Slope", "selected": false },
+            { "name": "Fabulous Fireworks", "selected": false },
+            { "name": "Whispering Wind", "selected": false },
+            { "name": "Giggling Girls", "selected": false },
+            { "name": "Marvelous Moonlight", "selected": false },
+            { "name": "Sassy Sunflowers", "selected": false }
+        ]
+    },
+    {
+        name: 'Rhyme Time',
+        words: [
+            { "name": "Double Trouble", "selected": false },
+            { "name": "Fender Bender", "selected": false },
+            { "name": "Trick or Treat", "selected": false },
+            { "name": "Snail Mail", "selected": false },
+            { "name": "Funny Bunny", "selected": false },
+            { "name": "Hustle and Bustle", "selected": false },
+            { "name": "Teeny Tiny", "selected": false },
+            { "name": "Fancy Pants", "selected": false },
+            { "name": "Puppy Love", "selected": false },
+            { "name": "Chit Chat", "selected": false }
         ]
     }
 ]
